@@ -188,20 +188,25 @@ print('Pre-clipped file removed')
 
 dtm_size = os.getenv('DTM_SIZE')
 
-# Move the amended parameter file to the outputs folder
-if len(parameter_file) == 1 :
+# Print all of the input parameters to an excel sheet to be read in later
+with open(os.path.join('elevation-parameters.csv'), 'w') as f:
+    f.write('PARAMETER,VALUE\n')
+    f.write('DTM_SIZE,%s\n' %dtm_size)
+
+# # Move the amended parameter file to the outputs folder
+# if len(parameter_file) == 1 :
     
-    file_path = os.path.splitext(parameter_file[0])
-    print('Filepath:',file_path)
-    filename=file_path[0].split("/")
-    print('Filename:',filename[-1])
+#     file_path = os.path.splitext(parameter_file[0])
+#     print('Filepath:',file_path)
+#     filename=file_path[0].split("/")
+#     print('Filename:',filename[-1])
 
-    src = parameter_file[0]
-    print('src:',src)
-    dst = os.path.join(parameter_outputs_path,filename[-1] + '.csv')
-    print('dst,dst')
-    shutil.copy(src,dst)
+#     src = parameter_file[0]
+#     print('src:',src)
+#     dst = os.path.join(parameter_outputs_path,filename[-1] + '.csv')
+#     print('dst,dst')
+#     shutil.copy(src,dst)
 
-    # Print all of the input parameters to an excel sheet to be read in later
-    with open(os.path.join(dst), 'a') as f:
-        f.write('DTM_SIZE,%s\n' %dtm_size)
+#     # Print all of the input parameters to an excel sheet to be read in later
+#     with open(os.path.join(dst), 'a') as f:
+#         f.write('DTM_SIZE,%s\n' %dtm_size)
