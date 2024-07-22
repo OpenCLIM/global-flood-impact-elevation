@@ -82,10 +82,11 @@ dem_files_zip = glob(raster_path + "/*.zip", recursive = True)
 print(dem_files_zip)
 
 # If yes, unzip the file (if the user has formatted the data correctly, this should reveal a .gpkg)
-if len(dem_files_zip) != 0:
-    print('zip file found')
-    with ZipFile(dem_files_zip[0],'r') as zip:
-        zip.extractall(raster_path)
+for i in range (0,len(dem_files_zip)):
+    if len(dem_files_zip) != 0:
+        print('zip file found')
+        with ZipFile(dem_files_zip[i],'r') as zip:
+            zip.extractall(raster_path)
 
 # Identify geopackages containing the polygons of the buildings
 raster_files = glob(raster_path + "/**/*.asc", recursive = True)
