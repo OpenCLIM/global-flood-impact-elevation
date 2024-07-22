@@ -1,0 +1,48 @@
+kind: M
+api_version: v1beta3
+metadata:
+  display_name: Global Urban_Flooding:Elevation
+  contact_point_name: Olivia Butters
+  contact_point_email: olivia.butters@newcastle.ac.uk
+  name: global-elevation-raster
+  publisher: Newcastle University
+  summary: >
+    Creates a DTM of the chosen area of interest based on bounday input.
+  source_code: https://github.com/OpenCLIM/global-flood-impact-elevation
+  description: >
+   The CityCAT model relies on elevation data. This model accepts elevation data in .asc, .tif or .tiff format, clips the data to the
+    selected area, and ensures all data is in the same projection. If the file sizes are too large, multiple files can be added directly, or zipped.
+spec:
+  inputs:
+    dataslots:
+      - name: Boundary
+        description:
+          This file should be in gpkg or shp format and should define the city bounds.
+        path: inputs/boundary
+        required: false
+
+      - name: 5km DTM Information
+        description:
+          Elevation raster saved in .asc format. Zipped .asc files will also be accepted. 
+        default:
+          - f07f4bcc-04be-4507-bae7-874345c9e944
+        path: inputs/rasters
+        required: true
+   
+      - name: Parameters
+        description:
+          All input parameters and their values are stored in a csv file.
+        path: inputs/parameters/
+        required: false
+
+  outputs:
+    datasets:
+      - name: outputs/dem/*
+        type: folder
+        description:
+          As asc file containing the digital elevation model for the area of interest.
+
+      - name: outputs/parameters/*
+        type: folder
+        description:
+          All parameters and their values are stored in a csv file.
