@@ -189,7 +189,7 @@ print('Pre-clipped file removed')
 dtm_size = os.getenv('DTM_SIZE')
 
 # Print all of the input parameters to an excel sheet to be read in later
-with open(os.path.join('elevation-parameters.csv'), 'w') as f:
+with open(os.path.join(parameter_outputs_path,'elevation-parameters.csv'), 'w') as f:
     f.write('PARAMETER,VALUE\n')
     f.write('DTM_SIZE,%s\n' %dtm_size)
 
