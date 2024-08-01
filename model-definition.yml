@@ -18,7 +18,7 @@ spec:
     parameters:
       - name: DTM_SIZE
         title: DTM Resolution
-        type: interger
+        type: integer
         description:
           Write here the resolution of the elevation model.
         required: true
