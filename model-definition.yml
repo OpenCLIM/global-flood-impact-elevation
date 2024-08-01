@@ -14,6 +14,16 @@ metadata:
     selected area, and ensures all data is in the same projection. If the file sizes are too large, multiple files can be added directly, or zipped.
 spec:
   inputs:
+  
+    parameters:
+      - name: DTM_SIZE
+        title: DTM Resolution
+        type: interger
+        description:
+          Write here the resolution of the elevation model.
+        required: true
+        default: 5
+            
     dataslots:
       - name: Boundary
         description:
