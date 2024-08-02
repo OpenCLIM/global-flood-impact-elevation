@@ -37,6 +37,10 @@ parameter_outputs_path = os.path.join(outputs_path, 'parameters')
 parameter_outputs_path_ = outputs_path + '/' + 'parameters'
 if not os.path.exists(parameter_outputs_path):
     os.mkdir(parameter_outputs_path_)
+boundary_outputs_path = os.path.join(outputs_path, 'boundary')
+boundary_outputs_path_ = outputs_path + '/' + 'boundary'
+if not os.path.exists(boundary_outputs_path):
+    os.mkdir(boundary_outputs_path_)
 
 # Look to see if a parameter file has been added
 parameter_file = glob(parameters_path + "/*.csv", recursive = True)
@@ -193,20 +197,17 @@ with open(os.path.join(parameter_outputs_path,'elevation-parameters.csv'), 'w') 
     f.write('PARAMETER,VALUE\n')
     f.write('DTM_SIZE,%s\n' %dtm_size)
 
-# # Move the amended parameter file to the outputs folder
-# if len(parameter_file) == 1 :
+# Move the boundary file to the outputs folder
+if len(boundary_1) == 1 :
     
-#     file_path = os.path.splitext(parameter_file[0])
-#     print('Filepath:',file_path)
-#     filename=file_path[0].split("/")
-#     print('Filename:',filename[-1])
+    file_path = os.path.splitext(boundary_1[0])
+    print('Filepath:',file_path)
+    filename=file_path[0].split("/")
+    print('Filename:',filename[-1])
 
-#     src = parameter_file[0]
-#     print('src:',src)
-#     dst = os.path.join(parameter_outputs_path,filename[-1] + '.csv')
-#     print('dst,dst')
-#     shutil.copy(src,dst)
+    src = boundary_1[0]
+    print('src:',src)
+    dst = os.path.join(boundary_outputs_path,filename[-1] + '.csv')
+    print('dst,dst')
+    shutil.copy(src,dst)
 
-#     # Print all of the input parameters to an excel sheet to be read in later
-#     with open(os.path.join(dst), 'a') as f:
-#         f.write('DTM_SIZE,%s\n' %dtm_size)
