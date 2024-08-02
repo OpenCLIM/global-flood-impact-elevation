@@ -207,7 +207,7 @@ if len(boundary_1) == 1 :
 
     src = boundary_1[0]
     print('src:',src)
-    dst = os.path.join(boundary_outputs_path,filename[-1] + '.csv')
+    dst = os.path.join(boundary_outputs_path,filename[-1] + '.gpkg')
     print('dst,dst')
     shutil.copy(src,dst)
 
