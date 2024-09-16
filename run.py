@@ -180,14 +180,20 @@ subprocess.run(['gdal_translate', '-of', 'GTiff', raster_output_clip, raster_out
 
 
 #if proj != None:
-dst_crs = 'EPSG:'+projection
-reprojected = subprocess.run(["gdalwarp", "-s_srs",src_crs,"-t_srs",dst_crs, raster_output_image, raster_output_image_crs])#"-t_srs",dst_crs,
-os.remove(raster_output_image)
+if os.path.exists(raster_output_image): 
+    reprojected = subprocess.run(["gdalwarp", "-s_srs",src_crs,"-t_srs",dst_crs, raster_output_image, raster_output_image_crs])#"-t_srs",dst_crs,
+else:
+    reprojected = subprocess.run(["gdalwarp", "-s_srs",src_crs,"-t_srs",dst_crs, raster_output, raster_output_image_crs])#"-t_srs",dst_crs,
+
+if os.path.exists(raster_output_image): 
+    os.remove(raster_output_image)
 
 
 # Remove unclipped file
-os.remove(raster_output)
-os.remove(raster_output_clip)
+if os.path.exists(raster_output_image_crs): 
+    os.remove(raster_output)
+if os.path.exists(raster_output_clip): 
+    os.remove(raster_output_clip)
 print('Pre-clipped file removed')
 
 dtm_size = os.getenv('DTM_SIZE')
@@ -210,4 +216,3 @@ if len(boundary_1) == 1 :
     dst = os.path.join(boundary_outputs_path,filename[-1] + '.gpkg')
     print('dst,dst')
     shutil.copy(src,dst)
-
