@@ -180,6 +180,7 @@ subprocess.run(['gdal_translate', '-of', 'GTiff', raster_output_clip, raster_out
 
 
 #if proj != None:
+dst_crs = 'EPSG:'+projection
 if os.path.exists(raster_output_image): 
     reprojected = subprocess.run(["gdalwarp", "-s_srs",src_crs,"-t_srs",dst_crs, raster_output_image, raster_output_image_crs])#"-t_srs",dst_crs,
 else:
